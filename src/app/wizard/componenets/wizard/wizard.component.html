@@ -1,26 +1,29 @@
 <div class="text-center">
-    <span *ngFor="let step of steps"
-        [ngClass]="step?.stepId == currentActiveStep.stepId ? 'active' : 'inactive'"
-        style="margin-left: 20px;">{{step?.stepName}}</span>
+    <div class="mt-5">
+        <span *ngFor="let step of steps" [ngClass]="step?.stepId == currentActiveStep.stepId ? 'active' : 'inactive'"
+            style="margin-left: 20px;">{{step?.stepName}}</span>
+    </div>
     <br>
-    <form [formGroup]="stepForm" skipValidation>
+    <form style="margin-top:60px" [formGroup]="stepForm" skipValidation>
         <div formArrayName="wizardControls">
             <div *ngFor="let control of getWizardControls().controls let i = index">
-                <div [formGroupName]="i" style="margin-top:10px">
+                <div class="form-group wizard-form-controls row" [formGroupName]="i" style="margin-top:10px">
                     <div>
-                        <div>
-                            <input placeholder="{{control.get('label')?.value}}"  class="form-control"
-                                type="text" formControlName="answer" />
+                        <div class="col col-md-4 wizard-form-controls">
+                            <input placeholder="{{control.get('label')?.value}}" class="form-control" type="text"
+                                formControlName="answer" />
                         </div>
                     </div>
                     <div class="text-danger" *ngIf="(!control.valid) && stepSubmitted">
-                        "{{control.get('errorMessageAR')?.value}}"
+                        {{control.get('errorMessageAR')?.value}}
                     </div>
                 </div>
             </div>
 
         </div>
     </form>
-    <button class="btn btn-primary" (click)="onNext()" [disabled]="currentActiveStep.nextStepId == '-1'" >التالى</button>
-    <button (click)="onPrevious()" [disabled]="currentActiveStep.previousStepId=='-1'">السابق</button>
+    <button (click)="onNext()" class="btn btn-primary actions-btns"
+        [disabled]="currentActiveStep.nextStepId == '-1'">التالى</button>
+    <button (click)="onPrevious()" class="btn btn-secondary actions-btns"
+        [disabled]="currentActiveStep.previousStepId=='-1'">السابق</button>
 </div>
