@@ -1,0 +1,26 @@
+<div class="text-center">
+    <span *ngFor="let step of steps"
+        [ngClass]="step?.stepId == currentActiveStep.stepId ? 'active' : 'inactive'"
+        style="margin-left: 20px;">{{step?.stepName}}</span>
+    <br>
+    <form [formGroup]="stepForm" skipValidation>
+        <div formArrayName="wizardControls">
+            <div *ngFor="let control of getWizardControls().controls let i = index">
+                <div [formGroupName]="i" style="margin-top:10px">
+                    <div>
+                        <div>
+                            <input placeholder="{{control.get('label')?.value}}"  class="form-control"
+                                type="text" formControlName="answer" />
+                        </div>
+                    </div>
+                    <div class="text-danger" *ngIf="(!control.valid) && stepSubmitted">
+                        "{{control.get('errorMessageAR')?.value}}"
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <button class="btn btn-primary" (click)="onNext()" [disabled]="currentActiveStep.nextStepId == '-1'" >التالى</button>
+    <button (click)="onPrevious()" [disabled]="currentActiveStep.previousStepId=='-1'">السابق</button>
+</div>

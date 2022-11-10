@@ -1,11 +1,18 @@
 import { FormControlType } from '../enums/formControlType';
-import { formControlMetaData } from './formControlMetaData';
+import { FormControlMetaData } from './formControlMetaData';
 
 export class FormControl {
+  label: string;
   formControlType: FormControlType;
-  formControlMetaData: Array<formControlMetaData> = new Array();
-  constructor(formControlType :FormControlType,formControlValidators:Array<formControlMetaData>){
+  formControlMetaData: FormControlMetaData;
+  answer: string;
+  constructor(
+    label: string,
+    formControlType: FormControlType,
+    formControlMetaData: FormControlMetaData
+  ) {
+    this.label = label;
     this.formControlType = formControlType;
-    this.formControlMetaData = formControlValidators;
+    this.formControlMetaData = formControlMetaData;
   }
 }
