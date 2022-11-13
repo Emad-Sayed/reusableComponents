@@ -10,8 +10,9 @@
                 <div class="form-group wizard-form-controls row" [formGroupName]="i" style="margin-top:10px">
                     <div>
                         <div class="col col-md-4 wizard-form-controls">
-                            <input placeholder="{{control.get('label')?.value}}" class="form-control" type="text"
-                                formControlName="answer" />
+                            <!-- <input placeholder="{{control.get('label')?.value}}" class="form-control" type="text"
+                                formControlName="answer" /> -->
+                                <app-wizard-text [index]="i" [label]="control.get('label')?.value" ></app-wizard-text>
                         </div>
                     </div>
                     <div class="text-danger" *ngIf="(!control.valid) && stepSubmitted">
