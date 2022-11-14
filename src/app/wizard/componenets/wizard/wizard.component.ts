@@ -41,6 +41,7 @@ export class WizardComponent implements OnInit {
       wizardControls.push(
         this.formBuilder.group({
           label: [control.label],
+          type: [control.formControlType],
           answer: [
             stepData.stepId == ''
               ? ''
