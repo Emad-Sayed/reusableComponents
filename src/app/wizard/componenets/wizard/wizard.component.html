@@ -11,9 +11,11 @@
                     <div>
                         <div class="col col-md-4 wizard-form-controls">
                             <container-element [ngSwitch]="control.get('type')?.value">
-                                <app-wizard-text *ngSwitchCase="0" [index]="i" [label]="control.get('label')?.value">
+                                <app-wizard-text *ngSwitchCase="0" [elementId]="control.get('elementId')?.value"
+                                    [index]="i" [label]="control.get('label')?.value">
                                 </app-wizard-text>
-                                <app-wizard-number *ngSwitchCase="2" [index]="i" [label]="control.get('label')?.value">
+                                <app-wizard-number *ngSwitchCase="2" [elementId]="control.get('elementId')?.value"
+                                    [index]="i" [label]="control.get('label')?.value">
                                 </app-wizard-number>
                             </container-element>
                         </div>

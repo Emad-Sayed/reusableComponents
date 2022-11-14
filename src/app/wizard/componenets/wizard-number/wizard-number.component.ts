@@ -10,6 +10,7 @@ export class WizardNumberComponent implements OnInit {
 
   @Input() index:number
   @Input() label:string
+  @Input() elementId:string
   form: FormGroup;
   constructor(private rootFormGroup: FormGroupDirective) {}
 
