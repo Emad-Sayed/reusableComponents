@@ -7,17 +7,28 @@ import { StepData } from '../modals/stepData';
   providedIn: 'root',
 })
 export class WizardService {
-  constructor() {}
-  private listOfFormData = new Array<StepData>();
-  wizardStepHandler = new Subject<string>();
+  private stepsData: StepData[] = [];
+  private wizardStepHandler = new Subject<string>();
+  constructor() {
+    this.stepsData = [];
+  }
   addOrUpdateStepData(step: StepData) {
-    this.listOfFormData = this.listOfFormData.filter(
-      (d) => d.stepId != step.stepId
-    );
-    this.listOfFormData.push(step);
+    this.stepsData = this.stepsData.filter((d) => d.stepId != step.stepId);
+    this.stepsData.push(step);
   }
   getStepData(stepId: string) {
-    let data = this.listOfFormData.find((d) => d.stepId == stepId);
+    let data = this.stepsData.find((d) => d.stepId == stepId);
     return new StepData(stepId, data?.data ?? []);
+  }
+  getAllStepsDataAndClear() {
+    let data = this.stepsData;
+    this.stepsData = [];
+    return data;
+  }
+  goToStep(stepId: string) {
+    this.wizardStepHandler.next(stepId);
+  }
+  getStepNotifier(): Subject<string> {
+    return this.wizardStepHandler;
   }
 }

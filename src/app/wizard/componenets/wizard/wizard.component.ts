@@ -11,10 +11,11 @@ import { WizardService } from '../../services/wizardService';
   styleUrls: ['./wizard.component.css'],
 })
 export class WizardComponent implements OnInit {
-  @Input() steps: Array<Step>;
+  @Input() steps: Step[];
   currentActiveStep: Step;
   stepForm: FormGroup;
   stepSubmitted: boolean;
+  dataSubmitted: any;
   get getOrderedSteps() {
     return this.steps.reverse();
   }
@@ -27,6 +28,9 @@ export class WizardComponent implements OnInit {
     this.currentActiveStep = this.steps[0];
     this.initiForm();
     this.buildStepForm();
+    this.wizardService.getStepNotifier().subscribe((stepId) => {
+      this.setActiveStep(stepId);
+    });
   }
   initiForm() {
     this.stepForm = this.formBuilder.group({
@@ -67,25 +71,46 @@ export class WizardComponent implements OnInit {
   getWizardControls(): FormArray {
     return this.stepForm.get('wizardControls') as FormArray;
   }
-  onNext() {
-    this.stepSubmitted = true;
-    if (this.stepForm.valid) {
-      this.wizardService.addOrUpdateStepData(
-        new StepData(this.currentActiveStep.stepId, this.stepForm.value['wizardControls'])
-      );
-      this.currentActiveStep =
-        this.steps.find((s) => s.stepId == this.currentActiveStep.nextStepId) ??
-        this.steps[0];
-      this.buildStepForm();
-    }
-  }
-  onPrevious() {
+  setActiveStep(stepId: string) {
     this.currentActiveStep =
       this.steps.find(
-        (s) => s.stepId == this.currentActiveStep.previousStepId
+        (s) => s.stepId == stepId
       ) ?? this.steps[0];
     this.buildStepForm(
       this.wizardService.getStepData(this.currentActiveStep?.stepId)
     );
+  }
+  onNext() {
+    this.stepSubmitted = true;
+    if (this.stepForm.valid) {
+      this.wizardService.addOrUpdateStepData(
+        new StepData(
+          this.currentActiveStep.stepId,
+          this.stepForm.value['wizardControls']
+        )
+      );
+      this.setActiveStep(this.currentActiveStep.nextStepId);
+    }
+  }
+  onPrevious() {
+    this.setActiveStep(this.currentActiveStep.previousStepId);
+  }
+  submit() {
+    this.stepSubmitted = true;
+    if (this.stepForm.valid) {
+      this.wizardService.addOrUpdateStepData(
+        new StepData(
+          this.currentActiveStep.stepId,
+          this.stepForm.value['wizardControls']
+        )
+      );
+      this.dataSubmitted = JSON.stringify(
+        this.wizardService.getAllStepsDataAndClear()
+      );
+      setTimeout(() => {
+        this.dataSubmitted = '';
+        this.wizardService.goToStep('s1');
+      }, 3000);
+    }
   }
 }

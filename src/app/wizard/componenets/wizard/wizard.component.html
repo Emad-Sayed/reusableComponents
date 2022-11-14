@@ -28,8 +28,9 @@
 
         </div>
     </form>
-    <button (click)="onNext()" class="btn btn-primary actions-btns"
-        [disabled]="currentActiveStep.nextStepId == '-1'">التالى</button>
+    <button (click)="currentActiveStep.nextStepId=='-1'?submit():onNext()"
+        class="btn btn-primary actions-btns">{{currentActiveStep.nextStepId=='-1'?"ارسال":"التالى"}}</button>
     <button (click)="onPrevious()" class="btn btn-secondary actions-btns"
         [disabled]="currentActiveStep.previousStepId=='-1'">السابق</button>
 </div>
+{{dataSubmitted}}
