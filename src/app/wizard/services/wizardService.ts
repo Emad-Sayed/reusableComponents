@@ -3,9 +3,7 @@ import { Subject } from 'rxjs';
 import { Step } from '../modals/step';
 import { StepData } from '../modals/stepData';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class WizardService {
   private stepsData: StepData[] = [];
   private wizardStepHandler = new Subject<string>();

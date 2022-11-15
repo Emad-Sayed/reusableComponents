@@ -9,6 +9,7 @@ import { WizardService } from '../../services/wizardService';
   selector: 'app-wizard',
   templateUrl: './wizard.component.html',
   styleUrls: ['./wizard.component.css'],
+  providers:[WizardService]
 })
 export class WizardComponent implements OnInit {
   @Input() steps: Step[];
