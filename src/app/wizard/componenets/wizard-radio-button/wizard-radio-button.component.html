@@ -1,0 +1,9 @@
+<ng-container [formGroup]="form">
+    <div id="{{elementId}}" class="form-group wizard-form-controls" [formGroupName]="index" style="margin-top:10px">
+        <label  class="radio-inline" *ngFor="let item of lookupDataToSelect">
+            <input  type="radio" value={{item}} formControlName="answer">
+            <span>{{item}}</span>
+        </label>
+    </div>
+</ng-container>
+

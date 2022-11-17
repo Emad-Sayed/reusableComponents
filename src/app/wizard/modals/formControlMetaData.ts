@@ -1,5 +1,6 @@
 export class FormControlMetaData {
   lookupDataURL: string;
+  lookupDataToSelect: string[];
   validator: string;
   errorMessageAR: string;
   errorMessageEN: string;
@@ -9,11 +10,13 @@ export class FormControlMetaData {
     css: string,
     errorMessageAR: string,
     errorMessageEN: string,
-    lookupDataURL: string = ''
+    lookupDataURL: string = '',
+    lookupDataToSelect: string[] = []
   ) {
     this.validator = validator;
     this.css = css;
     this.lookupDataURL = lookupDataURL;
+    this.lookupDataToSelect = lookupDataToSelect;
     this.errorMessageAR=errorMessageAR;
     this.errorMessageEN=errorMessageEN;
   }

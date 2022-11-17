@@ -18,14 +18,21 @@ export class TestWizardComponent implements OnInit {
       elementId: 'fs1c1',
       label: 'الاسم',
       formControlType: FormControlType.Text,
-      formControlMetaData: new FormControlMetaData('', '', 'هذا الحقل مطلوب', 'Required'),
+      formControlMetaData: new FormControlMetaData('[a-zA-Z ]+', '', 'هذا الحقل مطلوب و يحتوي على حروف فقط', 'Required'),
       answer: '',
     },
     {
       elementId: 'fs1c2',
       label: 'العمر',
       formControlType: FormControlType.Number,
-      formControlMetaData: new FormControlMetaData('', '', 'هذا الحقل مطلوب', 'Required'),
+      formControlMetaData: new FormControlMetaData('[0-9]+', '', 'هذا الحقل مطلوب و يحتوي على ارقام فقط', 'Required'),
+      answer: '',
+    },
+    {
+      elementId: 'fs1c2',
+      label: 'النوع',
+      formControlType: FormControlType.RadioButton,
+      formControlMetaData: new FormControlMetaData('', '', 'النوع مطلوب', 'Required','',["رجل","انثي"]),
       answer: '',
     },
   ]);

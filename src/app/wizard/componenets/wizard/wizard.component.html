@@ -17,6 +17,9 @@
                                 <app-wizard-number *ngSwitchCase="2" [elementId]="control.get('elementId')?.value"
                                     [index]="i" [label]="control.get('label')?.value">
                                 </app-wizard-number>
+                                <app-wizard-radio-button *ngSwitchCase="3" [elementId]="control.get('elementId')?.value"
+                                [index]="i" [label]="control.get('label')?.value" [lookupDataToSelect]="control.get('lookupDataToSelect')?.value">
+                            </app-wizard-radio-button>
                             </container-element>
                         </div>
                     </div>

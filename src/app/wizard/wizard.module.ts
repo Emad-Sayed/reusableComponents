@@ -7,6 +7,7 @@ import { WizardComponent } from './componenets/wizard/wizard.component';
 import { WizardTextComponent } from './componenets/wizard-text/wizard-text.component';
 import { WizardNumberComponent } from './componenets/wizard-number/wizard-number.component';
 import { TestWizardComponent } from './componenets/test-wizard/test-wizard.component';
+import { WizardRadioButtonComponent } from './componenets/wizard-radio-button/wizard-radio-button.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { TestWizardComponent } from './componenets/test-wizard/test-wizard.compo
     WizardTextComponent,
     WizardNumberComponent,
     TestWizardComponent,
+    WizardRadioButtonComponent,
   ],
   imports: [
     CommonModule,

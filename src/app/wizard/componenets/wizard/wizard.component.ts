@@ -52,7 +52,7 @@ export class WizardComponent implements OnInit {
             stepData.stepId == ''
               ? ''
               : this.getCachedData(control.label, stepData?.data),
-            Validators.required,
+            [Validators.required,Validators.pattern(control?.formControlMetaData?.validator)],
           ],
           errorMessageAR: [
             control?.formControlMetaData?.errorMessageAR ?? '',
@@ -62,6 +62,10 @@ export class WizardComponent implements OnInit {
             control?.formControlMetaData.errorMessageEN ?? '',
             [],
           ],
+          lookupDataToSelect: [
+            control?.formControlMetaData?.lookupDataToSelect ?? '',
+            [],
+          ]
         })
       );
     });
@@ -77,9 +81,7 @@ export class WizardComponent implements OnInit {
       this.steps.find(
         (s) => s.stepId == stepId
       ) ?? this.steps[0];
-    this.buildStepForm(
-      this.wizardService.getStepData(this.currentActiveStep?.stepId)
-    );
+    this.buildStepForm(this.wizardService.getStepData(this.currentActiveStep?.stepId));
   }
   onNext() {
     this.stepSubmitted = true;
