@@ -18,14 +18,14 @@ export class TestWizardComponent implements OnInit {
       elementId: 'fs1c1',
       label: 'الاسم',
       formControlType: FormControlType.Text,
-      formControlMetaData: new FormControlMetaData('[a-zA-Z ]+', '', 'هذا الحقل مطلوب و يحتوي على حروف فقط', 'Required'),
+      formControlMetaData: new FormControlMetaData('[a-zA-Z ]+', '', 'هذا الحقل مطلوب و يحتوي على حروف فقط', 'Letters Only'),
       answer: '',
     },
     {
       elementId: 'fs1c2',
       label: 'العمر',
       formControlType: FormControlType.Number,
-      formControlMetaData: new FormControlMetaData('[0-9]+', '', 'هذا الحقل مطلوب و يحتوي على ارقام فقط', 'Required'),
+      formControlMetaData: new FormControlMetaData('[0-9]+', '', 'هذا الحقل مطلوب و يحتوي على ارقام فقط', 'Number Only'),
       answer: '',
     },
     {
@@ -68,7 +68,7 @@ export class TestWizardComponent implements OnInit {
       answer: '',
     },
   ]);
-  steps: Array<Step> = [
+  steps: Step[] = [
     {
       elementId: 's1',
       stepId: '1',
