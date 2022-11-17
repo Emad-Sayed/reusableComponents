@@ -8,7 +8,9 @@ import { WizardTextComponent } from './componenets/wizard-text/wizard-text.compo
 import { WizardNumberComponent } from './componenets/wizard-number/wizard-number.component';
 import { TestWizardComponent } from './componenets/test-wizard/test-wizard.component';
 import { WizardRadioButtonComponent } from './componenets/wizard-radio-button/wizard-radio-button.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { WizardDropDownComponent } from './componenets/wizard-drop-down/wizard-drop-down.component';
+import { WizardQueryService } from './services/wizardQueryService';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,14 @@ import { WizardRadioButtonComponent } from './componenets/wizard-radio-button/wi
     WizardNumberComponent,
     TestWizardComponent,
     WizardRadioButtonComponent,
+    WizardDropDownComponent,
   ],
   imports: [
     CommonModule,
     WizardRoutingModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
+  providers: [WizardQueryService],
 })
-export class WizardModule { }
+export class WizardModule {}

@@ -20,6 +20,9 @@
                                 <app-wizard-radio-button *ngSwitchCase="3" [elementId]="control.get('elementId')?.value"
                                 [index]="i" [label]="control.get('label')?.value" [lookupDataToSelect]="control.get('lookupDataToSelect')?.value">
                             </app-wizard-radio-button>
+                            <app-wizard-drop-down *ngSwitchCase="4" [elementId]="control.get('elementId')?.value"
+                            [index]="i" [label]="control.get('label')?.value" [query]="control.get('query')?.value">
+                        </app-wizard-drop-down>
                             </container-element>
                         </div>
                     </div>

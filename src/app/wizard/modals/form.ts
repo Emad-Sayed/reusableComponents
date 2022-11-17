@@ -1,11 +1,11 @@
 import { FormControl } from './formControl';
 
 export class Form {
-  elementId:string
-  formControls: Array<FormControl> = new Array();
+  elementId: string;
+  formControls: FormControl[] = [];
 
-  constructor(elementId:string,formControls: Array<FormControl>) {
-    this.elementId=elementId;
+  constructor(elementId: string, formControls: FormControl[]) {
+    this.elementId = elementId;
     this.formControls = formControls;
   }
 }

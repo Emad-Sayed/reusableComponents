@@ -29,10 +29,17 @@ export class TestWizardComponent implements OnInit {
       answer: '',
     },
     {
-      elementId: 'fs1c2',
+      elementId: 'fs1c3',
       label: 'النوع',
       formControlType: FormControlType.RadioButton,
       formControlMetaData: new FormControlMetaData('', '', 'النوع مطلوب', 'Required','',["رجل","انثي"]),
+      answer: '',
+    },
+    {
+      elementId: 'fs1c4',
+      label: 'الجنسية',
+      formControlType: FormControlType.NormalDropDownList,
+      formControlMetaData: new FormControlMetaData('', '', 'الجنسية مطلوب', 'Required','assets/dropDownListData.json'),
       answer: '',
     },
   ]);

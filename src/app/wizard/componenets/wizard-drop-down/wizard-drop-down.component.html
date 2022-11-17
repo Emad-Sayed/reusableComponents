@@ -1,0 +1,10 @@
+<ng-container [formGroup]="form">
+    <div id="{{elementId}}" class="form-group wizard-form-controls" [formGroupName]="index" style="margin-top:10px">
+        <select class="form-select" formControlName="answer">
+            <option value="" disabled selected>{{label}}</option>
+            <option *ngFor="let option of lookupDataToSelect" [value]="option.id">
+                {{option.name}}
+            </option>
+        </select>
+    </div>
+</ng-container>

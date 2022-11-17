@@ -9,7 +9,7 @@ import { WizardService } from '../../services/wizardService';
   selector: 'app-wizard',
   templateUrl: './wizard.component.html',
   styleUrls: ['./wizard.component.css'],
-  providers:[WizardService]
+  providers: [WizardService],
 })
 export class WizardComponent implements OnInit {
   @Input() steps: Step[];
@@ -52,7 +52,10 @@ export class WizardComponent implements OnInit {
             stepData.stepId == ''
               ? ''
               : this.getCachedData(control.label, stepData?.data),
-            [Validators.required,Validators.pattern(control?.formControlMetaData?.validator)],
+            [
+              Validators.required,
+              Validators.pattern(control?.formControlMetaData?.validator),
+            ],
           ],
           errorMessageAR: [
             control?.formControlMetaData?.errorMessageAR ?? '',
@@ -65,7 +68,8 @@ export class WizardComponent implements OnInit {
           lookupDataToSelect: [
             control?.formControlMetaData?.lookupDataToSelect ?? '',
             [],
-          ]
+          ],
+          query: [control?.formControlMetaData?.lookupDataURL ?? '', []],
         })
       );
     });
@@ -78,10 +82,10 @@ export class WizardComponent implements OnInit {
   }
   setActiveStep(stepId: string) {
     this.currentActiveStep =
-      this.steps.find(
-        (s) => s.stepId == stepId
-      ) ?? this.steps[0];
-    this.buildStepForm(this.wizardService.getStepData(this.currentActiveStep?.stepId));
+      this.steps.find((s) => s.stepId == stepId) ?? this.steps[0];
+    this.buildStepForm(
+      this.wizardService.getStepData(this.currentActiveStep?.stepId)
+    );
   }
   onNext() {
     this.stepSubmitted = true;
