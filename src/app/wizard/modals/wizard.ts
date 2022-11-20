@@ -5,17 +5,17 @@ import { Step } from './step';
 import { StepData } from './stepData';
 
 export class Wizard {
-  elementId:string;
+  elementId: string;
   submitUrl: string;
-  steps: Array<Step> = new Array();
-  wizardNotifier: Subject<Array<StepData>>;
+  steps: Step[] = [];
+  wizardNotifier: Subject<StepData[]>;
   constructor(
-    elementId:string,
+    elementId: string,
     submitUrl: string,
-    wizardNotifier: Subject<Array<StepData>>,
+    wizardNotifier: Subject<StepData[]>,
     steps: Array<Step>
   ) {
-    this.elementId=elementId;
+    this.elementId = elementId;
     this.submitUrl = submitUrl;
     this.wizardNotifier = wizardNotifier;
     this.steps = steps;
