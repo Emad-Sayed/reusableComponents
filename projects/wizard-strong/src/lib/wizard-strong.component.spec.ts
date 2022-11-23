@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestWizardComponent } from './test-wizard.component';
+import { WizardStrongComponent } from './wizard-strong.component';
 
-describe('TestWizardComponent', () => {
-  let component: TestWizardComponent;
-  let fixture: ComponentFixture<TestWizardComponent>;
+describe('WizardStrongComponent', () => {
+  let component: WizardStrongComponent;
+  let fixture: ComponentFixture<WizardStrongComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TestWizardComponent ]
+      declarations: [ WizardStrongComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestWizardComponent);
+    fixture = TestBed.createComponent(WizardStrongComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

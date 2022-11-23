@@ -22,7 +22,13 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "paths": {
+      "wizardStrong": [
+        "dist/wizard-strong/wizard-strong",
+        "dist/wizard-strong"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

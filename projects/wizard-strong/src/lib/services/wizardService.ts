@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Step } from '../modals/step';
 import { StepData } from '../modals/stepData';
 
 @Injectable()
